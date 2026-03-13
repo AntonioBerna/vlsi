@@ -1,6 +1,6 @@
 <h1 align="center">
     <br>
-    <img src=".github/imgs/vlsi.png" alt="VLSI" width="200">
+    <img src=".github/imgs/vlsi.png" alt="VLSI" width="500">
     <br>
     Very Large Scale Integration (VLSI) Design
     <br>
