@@ -10,13 +10,9 @@ Specify in VHDL and Verilog, using a `process` or `always`, a hardware block tha
 # Analyze, elaborate and run the design
 make
 
-# Or work with a specific gate.
-# For example, for the NOR gate:
-make nor
-
 # Visualize the waveforms
 # For example, for the XOR gate:
-surfer xor.vcd
+surfer clock_signal_50.vcd
 
 # Clean up generated files
 make clean
