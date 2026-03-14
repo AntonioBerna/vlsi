@@ -71,11 +71,7 @@ int main(void) {
 
     printf("CLK=%2zu, RST=%u, INPUT=%u, STATE=%u, NEXT=%u, ALARM=%u\n", clk, rst, input, state, next_state, alarm);
 
-    if (rst == 1U) {
-      state = S0;
-    } else {
-      state = next_state;
-    }
+    state = (rst == 1U) ? S0 : next_state;
   }
 
   return 0;
