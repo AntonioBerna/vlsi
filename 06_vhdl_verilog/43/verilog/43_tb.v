@@ -38,7 +38,6 @@ module clock_signal_50_tb;
     end
 
     $display("Clock test completed successfully");
-    $finish;
   end
 
   initial begin
