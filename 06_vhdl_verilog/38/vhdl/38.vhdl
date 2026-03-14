@@ -1,121 +1,177 @@
 library ieee;
 
 -- NOR gate
-entity NOR_logic_gate is 
+
+entity nor_logic_gate is
   port (
-    a, b: in bit;
-    c: out bit
+    a : in    bit;
+    b : in    bit;
+    c : out   bit
   );
-end NOR_logic_gate;
+end entity nor_logic_gate;
 
-architecture NOR_dataflow of NOR_logic_gate is
-  begin
-    c <= a nor b;
-end NOR_dataflow;
+architecture nor_dataflow of nor_logic_gate is
 
-architecture NOR_behavioral of NOR_logic_gate is
-  begin
-    process(a, b)
-    begin
-      if (a = '0' and b = '0') then
-        c <= '1';
-      else
-        c <= '0';
-      end if;
-    end process;
-end NOR_behavioral;
+begin
 
-architecture NOR_conditional of NOR_logic_gate is
+  c <= a nor b;
+
+end architecture nor_dataflow;
+
+architecture nor_behavioral of nor_logic_gate is
+
+begin
+
+  nor_p : process (a, b) is
   begin
-    c <= '1' when (a = '0' and b = '0') else '0';
-end NOR_conditional;
+
+    if (a = '0' and b = '0') then
+      c <= '1';
+    else
+      c <= '0';
+    end if;
+
+  end process nor_p;
+
+end architecture nor_behavioral;
+
+architecture nor_conditional of nor_logic_gate is
+
+begin
+
+  c <= '1' when (a = '0' and b = '0') else
+       '0';
+
+end architecture nor_conditional;
 
 -- AND gate
-entity AND_logic_gate is 
+
+entity and_logic_gate is
   port (
-    a, b: in bit;
-    c: out bit
+    a : in    bit;
+    b : in    bit;
+    c : out   bit
   );
-end AND_logic_gate;
+end entity and_logic_gate;
 
-architecture AND_dataflow of AND_logic_gate is
-  begin
-    c <= a and b;
-end AND_dataflow;
+architecture and_dataflow of and_logic_gate is
 
-architecture AND_behavioral of AND_logic_gate is
-  begin
-    process(a, b)
-    begin
-      if (a = '1' and b = '1') then
-        c <= '1';
-      else
-        c <= '0';
-      end if;
-    end process;
-end AND_behavioral;
+begin
 
-architecture AND_conditional of AND_logic_gate is
+  c <= a and b;
+
+end architecture and_dataflow;
+
+architecture and_behavioral of and_logic_gate is
+
+begin
+
+  and_p : process (a, b) is
   begin
-    c <= '1' when (a = '1' and b = '1') else '0';
-end AND_conditional;
+
+    if (a = '1' and b = '1') then
+      c <= '1';
+    else
+      c <= '0';
+    end if;
+
+  end process and_p;
+
+end architecture and_behavioral;
+
+architecture and_conditional of and_logic_gate is
+
+begin
+
+  c <= '1' when (a = '1' and b = '1') else
+       '0';
+
+end architecture and_conditional;
 
 -- OR gate
-entity OR_logic_gate is 
+
+entity or_logic_gate is
   port (
-    a, b: in bit;
-    c: out bit
+    a : in    bit;
+    b : in    bit;
+    c : out   bit
   );
-end OR_logic_gate;
+end entity or_logic_gate;
 
-architecture OR_dataflow of OR_logic_gate is
-  begin
-    c <= a or b;
-end OR_dataflow;
+architecture or_dataflow of or_logic_gate is
 
-architecture OR_behavioral of OR_logic_gate is
-  begin
-    process(a, b)
-    begin
-      if (a = '1' or b = '1') then
-        c <= '1';
-      else
-        c <= '0';
-      end if;
-    end process;
-end OR_behavioral;
+begin
 
-architecture OR_conditional of OR_logic_gate is
+  c <= a or b;
+
+end architecture or_dataflow;
+
+architecture or_behavioral of or_logic_gate is
+
+begin
+
+  or_p : process (a, b) is
   begin
-    c <= '1' when (a = '1' or b = '1') else '0';
-end OR_conditional;
+
+    if (a = '1' or b = '1') then
+      c <= '1';
+    else
+      c <= '0';
+    end if;
+
+  end process or_p;
+
+end architecture or_behavioral;
+
+architecture or_conditional of or_logic_gate is
+
+begin
+
+  c <= '1' when (a = '1' or b = '1') else
+       '0';
+
+end architecture or_conditional;
 
 -- XOR gate
-entity XOR_logic_gate is 
+
+entity xor_logic_gate is
   port (
-    a, b: in bit;
-    c: out bit
+    a : in    bit;
+    b : in    bit;
+    c : out   bit
   );
-end XOR_logic_gate;
+end entity xor_logic_gate;
 
-architecture XOR_dataflow of XOR_logic_gate is
-  begin
-    c <= a xor b;
-end XOR_dataflow;
+architecture xor_dataflow of xor_logic_gate is
 
-architecture XOR_behavioral of XOR_logic_gate is
-  begin
-    process(a, b)
-    begin
-      if (a /= b) then
-        c <= '1';
-      else
-        c <= '0';
-      end if;
-    end process;
-end XOR_behavioral;
+begin
 
-architecture XOR_conditional of XOR_logic_gate is
+  c <= a xor b;
+
+end architecture xor_dataflow;
+
+architecture xor_behavioral of xor_logic_gate is
+
+begin
+
+  xor_p : process (a, b) is
   begin
-    c <= '1' when (a /= b) else '0';
-end XOR_conditional;
+
+    if (a /= b) then
+      c <= '1';
+    else
+      c <= '0';
+    end if;
+
+  end process xor_p;
+
+end architecture xor_behavioral;
+
+architecture xor_conditional of xor_logic_gate is
+
+begin
+
+  c <= '1' when (a /= b) else
+       '0';
+
+end architecture xor_conditional;
