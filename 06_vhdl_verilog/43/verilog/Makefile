@@ -1,10 +1,13 @@
 IVERILOG ?= iverilog
 VVP ?= vvp
 VERIBLE ?= verible-verilog-format
+VERIBLE_SYNTAX ?= verible-verilog-syntax
+VERIBLE_LINT ?= verible-verilog-lint
+VERIBLE_LINT_FLAGS ?= --rules=-module-filename
 STOP_NS ?= 30
 SRC := 43.v 43_tb.v
 
-.PHONY: all run format clean
+.PHONY: all run format lint clean
 
 all: run
 
@@ -17,7 +20,24 @@ format:
 		echo "Error: $(VERIBLE) not found. Install verible."; \
 		exit 1; \
 	fi
+	@if ! command -v $(VERIBLE_SYNTAX) >/dev/null 2>&1; then \
+		echo "Error: $(VERIBLE_SYNTAX) not found. Install verible."; \
+		exit 1; \
+	fi
+	@if ! command -v $(VERIBLE_LINT) >/dev/null 2>&1; then \
+		echo "Error: $(VERIBLE_LINT) not found. Install verible."; \
+		exit 1; \
+	fi
 	$(VERIBLE) --inplace $(SRC)
+	$(VERIBLE_SYNTAX) $(SRC)
+	$(VERIBLE_LINT) $(VERIBLE_LINT_FLAGS) $(SRC)
+
+lint:
+	@if ! command -v $(VERIBLE_LINT) >/dev/null 2>&1; then \
+		echo "Error: $(VERIBLE_LINT) not found. Install verible."; \
+		exit 1; \
+	fi
+	$(VERIBLE_LINT) $(VERIBLE_LINT_FLAGS) $(SRC)
 
 clean:
 	rm -f *.out *.vcd

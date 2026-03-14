@@ -12,7 +12,7 @@ module NOR_logic_gate_behavioral (
     b,
     output reg c
 );
-  always @(*) begin
+  always_comb begin
     if (a == 1'b0 && b == 1'b0) begin
       c = 1'b1;
     end else begin
@@ -43,7 +43,7 @@ module AND_logic_gate_behavioral (
     b,
     output reg c
 );
-  always @(*) begin
+  always_comb begin
     if (a == 1'b1 && b == 1'b1) begin
       c = 1'b1;
     end else begin
@@ -74,7 +74,7 @@ module OR_logic_gate_behavioral (
     b,
     output reg c
 );
-  always @(*) begin
+  always_comb begin
     if (a == 1'b1 || b == 1'b1) begin
       c = 1'b1;
     end else begin
@@ -105,7 +105,7 @@ module XOR_logic_gate_behavioral (
     b,
     output reg c
 );
-  always @(*) begin
+  always_comb begin
     if (a != b) begin
       c = 1'b1;
     end else begin
