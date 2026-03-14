@@ -11,7 +11,7 @@ $(TARGET): $(SRC)
 	$(CC) $(CFLAGS) -o $@ $^
 
 format:
-	@clang-format -i $(SRC)
+	@clang-format -i -style="{ColumnLimit: 120}" $(SRC)
 
 clean:
 	rm -f $(TARGET)
