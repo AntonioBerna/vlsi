@@ -16,6 +16,10 @@ run:
 	$(VVP) clock_signal_50_tb.out
 
 format:
+	@if ! command -v $(VERIBLE) >/dev/null 2>&1; then \
+		echo "Error: $(VERIBLE) not found. Install verible."; \
+		exit 1; \
+	fi
 	$(VERIBLE) --inplace $(SRC)
 	$(VERIBLE_SYNTAX) $(SRC)
 	$(VERIBLE_LINT) $(VERIBLE_LINT_FLAGS) $(SRC)
